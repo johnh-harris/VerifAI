@@ -1,6 +1,8 @@
 import sys
 from PyQt6.QtWidgets import QApplication
 from verifai.ui.main_window import MainWindow
+from verifai.ui.api_connector import ApiKeyDialog
+from verifai.core.config import get_config, get_api_key
 
 
 def main() -> None:
@@ -8,7 +10,11 @@ def main() -> None:
     app.setApplicationName("VerifAI")
     app.setOrganizationName("VerifAI")
 
-    window = MainWindow()
+    if not get_api_key():
+        dialog = ApiKeyDialog()
+        dialog.exec()
+
+    window = MainWindow(api_key=get_api_key())
     window.show()
 
     sys.exit(app.exec())

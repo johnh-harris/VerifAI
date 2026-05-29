@@ -1,9 +1,18 @@
 from dataclasses import dataclass, field
+import os
 from pathlib import Path
-
+import keyring
 
 APP_DIR = Path.home() / ".verifai"
+_SERVICE = "verifai"
+_KEY_NAME = "anthropic_api_key"
 
+def get_api_key() -> str | None:
+    return os.environ.get("ANTHROPIC_API_KEY") or keyring.get_password(_SERVICE, _KEY_NAME)
+
+# TODO: check if key is valid
+def set_api_key(key: str) -> None:
+    keyring.set_password(_SERVICE, _KEY_NAME, key)
 
 @dataclass
 class Config:

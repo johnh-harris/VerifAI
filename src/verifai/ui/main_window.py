@@ -11,8 +11,10 @@ from PyQt6.QtGui import QAction
 
 
 class MainWindow(QMainWindow):
-    def __init__(self) -> None:
+    # API key will go in as parameter to constructor in future when we have more screens
+    def __init__(self, api_key: str | None = None) -> None:
         super().__init__()
+        self.api_key = api_key
         self.setWindowTitle("VerifAI")
         self.setMinimumSize(800, 600)
         self._build_menu()
