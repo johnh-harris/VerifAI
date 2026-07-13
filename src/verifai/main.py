@@ -2,7 +2,7 @@ import sys
 from PyQt6.QtWidgets import QApplication
 from verifai.ui.main_window import MainWindow
 from verifai.ui.api_connector import ApiKeyDialog
-from verifai.core.config import get_config, get_api_key
+from verifai.core.config import get_api_key
 
 
 def main() -> None:

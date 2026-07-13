@@ -27,6 +27,10 @@ where = ["src"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
+# This project uses function-based tests only; disable class-based test
+# collection so domain classes like TestbenchGenerator aren't mistaken
+# for test classes.
+python_classes = ""
 
 [tool.ruff]
 src = ["src"]

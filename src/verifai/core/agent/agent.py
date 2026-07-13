@@ -34,8 +34,8 @@ class Agent:
         result = agent.run("What is 3 + 4?")
     """
 
-    def __init__(self, system: str = "You are a helpful assistant.") -> None:
-        self._client = anthropic.Anthropic()
+    def __init__(self, system: str = "You are a helpful assistant.", api_key: str | None = None) -> None:
+        self._client = anthropic.Anthropic(api_key=api_key)
         self._system = system
         self._tools: list[dict[str, Any]] = []
         self._handlers: dict[str, Callable[..., Any]] = {}
